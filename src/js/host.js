@@ -1,7 +1,5 @@
 import './lib/mqttws31.min'
 import $ from 'jquery'
-import nanoid from 'nanoid'
-import {post} from './restapi'
 
 window.onload = function () {
   var apiHost = (!location.href.match(/172.25|localhost|127.0.0/)) ? '/' : process.env.PRODUCTION_URL
@@ -49,7 +47,7 @@ window.onload = function () {
         console.log('offersdp', offerSdp)
         connectGuid = r.connectguid
         pcConfig = r.rtcConfig
-        client = new Paho.MQTT.Client('stpush.startsupport.com', Number(4433), nanoid(11))
+        client = new Paho.MQTT.Client('stpush.startsupport.com', Number(4433), 'host')
 
         // set callback handlers
         client.onConnectionLost = onConnectionLost
